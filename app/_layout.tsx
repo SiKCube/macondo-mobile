@@ -1,24 +1,30 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { COLORS } from "@/consts";
+import { AreYouSerious_400Regular, useFonts } from "@expo-google-fonts/are-you-serious";
+import { Stack } from "expo-router";
+import Logger from "./tests/logger";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const [fontsLoaded] = useFonts({
+    AreYouSerious: AreYouSerious_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+    <>
+      <Stack screenOptions={{ contentStyle: { backgroundColor: COLORS.bg_color } }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+        <Stack.Screen name="[id]" options={{
+          headerShown: true,
+          headerTitle: "Project details",
+          headerStyle: { backgroundColor: COLORS.bg_card_color },
+          headerTitleStyle: { color: COLORS.macondo_yellow, fontFamily: "AreYouSerious", fontSize: 40 },
+        }} />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      {/* <Logger /> */}
+    </>
   );
 }

@@ -1,35 +1,44 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { COLORS } from "@/consts";
+import { Tabs } from "expo-router";
+import { Image } from "react-native";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        sceneStyle: { backgroundColor: COLORS.bg_color },
+        headerStyle: { backgroundColor: COLORS.bg_card_color },
+        headerTitleStyle: { color: COLORS.macondo_yellow, fontFamily: "AreYouSerious", fontSize: 40 },
+        tabBarStyle: { backgroundColor: COLORS.bg_card_color },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="projects"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Projects",
+          headerTitle: "Your projects",
+          tabBarActiveTintColor: COLORS.p_color,
+          tabBarIcon: () => <Image source={require("../../assets/sprites/etapa_1.png")} resizeMode="contain" style={{ width: 38, }} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="calculator"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Calculator",
+          headerTitle: "Calculator",
+          tabBarActiveTintColor: COLORS.p_color,
+          tabBarIcon: () => <Image source={require("../../assets/sprites/money.png")} resizeMode="contain" style={{ width: 32, }} />,
+        }}
+      />
+      <Tabs.Screen
+        name="me"
+        options={{
+          title: "Me",
+          headerTitle: "You",
+          tabBarActiveTintColor: COLORS.p_color,
+          tabBarIcon: () => <Image source={require("../../assets/sprites/profile.png")} resizeMode="contain" style={{ width: 28 }} />,
         }}
       />
     </Tabs>
-  );
+  )
 }
