@@ -8,9 +8,11 @@ import { Image, View } from "react-native";
 export default function Balance() {
   const [balance, setBalance] = useState<number | null>()
   const { getSecureValue } = useSecureStore("api-key")
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     const getBalance = async () => {
+      setLoading(true)
       const apikey = await getSecureValue("api-key")
 
       const { data } = await axios.request({
@@ -22,6 +24,7 @@ export default function Balance() {
       })
 
       setBalance(data.balance)
+      setLoading(false)
     }
     getBalance()
   }, [])
@@ -34,7 +37,7 @@ export default function Balance() {
           resizeMode="contain"
           source={require("../../assets/sprites/money.png")}
         />
-        <MacondoTitle size={20} text={String(balance)} />
+        <MacondoTitle size={20} text={loading ? "Loading" : String(balance)} />
       </View>
     </MacondoCard>
   )

@@ -12,17 +12,7 @@ export default function IntroForm() {
   const [inputVal, setInputVal] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
-  const { saveSecureValue, getSecureValue } = useSecureStore("api-key")
-
-  useEffect(() => {
-    const gotAPIKey = async () => {
-      const apiKey = await getSecureValue("api-key")
-
-      if (apiKey) router.navigate("/projects")
-    }
-
-    gotAPIKey()
-  }, [])
+  const { saveSecureValue } = useSecureStore("api-key")
 
   const handler = async () => {
     setLoading(true)
@@ -36,7 +26,6 @@ export default function IntroForm() {
       });
 
       if (data) {
-        console.log("Obteniendo datos...")
         await saveSecureValue("api-key", inputVal)
         storeUserData(inputVal)
         router.navigate("/projects")

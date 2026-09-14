@@ -1,7 +1,8 @@
 import { COLORS } from "@/consts";
+import UpdateUserDataOnRender from "@/features/user-data/updateUserDataOnRender";
 import { AreYouSerious_400Regular, useFonts } from "@expo-google-fonts/are-you-serious";
 import { Stack } from "expo-router";
-import Logger from "./tests/logger";
+// import Logger from "@/tests/logger";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -13,7 +14,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <UpdateUserDataOnRender>
       <Stack screenOptions={{ contentStyle: { backgroundColor: COLORS.bg_color } }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -25,6 +26,6 @@ export default function RootLayout() {
         }} />
       </Stack>
       {/* <Logger /> */}
-    </>
+    </UpdateUserDataOnRender>
   );
 }
