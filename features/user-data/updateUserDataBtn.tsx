@@ -13,6 +13,6 @@ export default function UpdateUserDataBtn() {
   }
 
   return (
-    <MacondoButton title={loading ? "Loading..." : "Reload data"} type="p" onClick={handler} disable={loading} />
+    <MacondoButton title={loading ? "Loading..." : "Reload stored data"} type="p" onClick={handler} disable={loading} />
   )
 }
