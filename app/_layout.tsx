@@ -25,7 +25,7 @@ export default function RootLayout() {
             headerShown: true,
             headerTitle: "Project details",
             headerStyle: { backgroundColor: COLORS.bg_card_color },
-            headerTitleStyle: { color: COLORS.macondo_yellow, fontFamily: "AreYouSerious", fontSize: 40 },
+            headerTitleStyle: { color: COLORS.p_color, fontFamily: "AreYouSerious", fontSize: 40,  },
           }} />
         </Stack>
         {/* <Logger /> */}

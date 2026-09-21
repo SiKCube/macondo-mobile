@@ -30,9 +30,9 @@ export default function ProjectCard({ id, name, type, project_streak_days, hacka
       <MacondoCardMark >
         <MacondoTitle text={name} size={15} />
         <View style={{ flex: 1, gap: 3, flexDirection: "row" }}>
-          <Pil text={String(level)} />
+          <Pil text={String("L"+level)} />
           <Pil text={type} />
-          <Pil text={String(Math.round(hackatime_hours_sum)) + "h"} />
+          <Pil text={String(hackatime_hours_sum.toFixed(2)) + "h"} />
         </View>
         <View style={{ flex: 1, gap: 5, flexDirection: "row", marginTop: 15 }}>
           <View style={{ flex: 1, flexDirection: "row" }}>
