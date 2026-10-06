@@ -1,11 +1,11 @@
 import MacondoCard from "@/components/ui/card";
 import MacondoTitle from "@/components/ui/title";
-import { View, Image } from "react-native";
-import { useStoredProfile } from "../user-data/hooks/useStoredProfile";
+import { useDataCtx } from "@/context/data-context-provider";
+import { Image, View } from "react-native";
 
 export default function LongestStreak() {
-  const profile = useStoredProfile()
-  
+  const { profile, loadingProfile } = useDataCtx()
+
   return (
     <MacondoCard>
       <View style={{ flexDirection: "column", alignItems: "center" }}>
@@ -14,7 +14,12 @@ export default function LongestStreak() {
           resizeMode="contain"
           source={require("../../assets/sprites/fire.png")}
         />
-        <MacondoTitle size={20} text={String(profile?.longest_current_streak) ?? "Error"} />
+        {
+          !loadingProfile && profile ?
+            <MacondoTitle size={20} text={String(profile?.longest_current_streak) ?? "Error"} />
+            :
+            "Loading..."            
+        }
       </View>
     </MacondoCard>
   )

@@ -119,11 +119,11 @@ export async function storeActiveCalendarData(userAPIKey: string, month: string)
         return current
       })
 
-      await AsyncStorage.setItem("active-calendar", JSON.stringify(updatedData))
+      await AsyncStorage.setItem(STORAGE_KEYS.activeCalendar, JSON.stringify(updatedData))
       return true
     }
   }
 
-  await AsyncStorage.setItem("active-calendar", JSON.stringify([newData]))
+  await AsyncStorage.setItem(STORAGE_KEYS.activeCalendar, JSON.stringify([newData]))
   return true
 }

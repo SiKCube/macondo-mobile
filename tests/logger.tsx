@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSecureStore } from "../../hooks/useSecureStore";
+import { useSecureStore } from "../hooks/useSecureStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Logger() {

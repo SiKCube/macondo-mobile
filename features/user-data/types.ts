@@ -44,4 +44,3 @@ export interface DayData {
   seconds_logged: number
   had_journal: boolean
 }
-

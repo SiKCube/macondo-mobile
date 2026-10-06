@@ -3,7 +3,6 @@ import LongestStreak from "@/features/profile/longest-streak";
 import ProfileCard from "@/features/profile/profile-card";
 import StreakLineChart from "@/features/project-stats/streaklineChart";
 import StreakPieChart from "@/features/project-stats/streakPieChart";
-import UpdateUserDataBtn from "@/features/user-data/updateUserDataBtn";
 import { ScrollView, View } from "react-native";
 
 export default function Me() {
@@ -23,7 +22,6 @@ export default function Me() {
           hegint={200}
           width={300}
         />
-        <UpdateUserDataBtn />
       </View>
       <View style={{ height: 60, width: "100%" }} />
     </ScrollView>

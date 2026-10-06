@@ -1,14 +1,16 @@
-import { Text, View } from "react-native"
+import LoadingSpinner from "@/components/loadingSpinner"
+import MacondoButton from "@/components/ui/button"
+import { useDataCtx } from "@/context/data-context-provider"
+import { View } from "react-native"
 import ProjectCard from "./project-card"
-import { useStoredProjects } from "../user-data/hooks/useStoredProjects"
 
 export default function ProjectsList() {
-  const projects = useStoredProjects()
+  const { projects, loadingProjects, updateProjects } = useDataCtx()
 
   return (
     <>
       {
-        projects ?
+        projects && !loadingProjects ?
           projects.map((prj) => (
             <ProjectCard
               id={prj.id}
@@ -22,9 +24,18 @@ export default function ProjectsList() {
             />
           ))
           :
-          <Text>None</Text>
+          <View style={{ padding: 16 }}>
+            <LoadingSpinner />
+          </View>
       }
-      <View style={{ height: 15 }} />
+      <View style={{ padding: 16 }}>
+        <MacondoButton
+          title="Reload"
+          disable={loadingProjects}
+          type="s"
+          onClick={() => updateProjects()}
+        />
+      </View>
     </>
   )
 }

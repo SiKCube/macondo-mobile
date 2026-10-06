@@ -1,9 +1,10 @@
-import { DonutChart } from "react-native-chart-kit/v2";
-import { useStoredProjects } from "../user-data/hooks/useStoredProjects";
 import MacondoCard from "@/components/ui/card";
 import MacondoTitle from "@/components/ui/title";
+import { useDataCtx } from "@/context/data-context-provider";
 import { useEffect, useState } from "react";
+import { DonutChart } from "react-native-chart-kit/v2";
 import { ProjectData } from "../user-data/types";
+import LoadingSpinner from "@/components/loadingSpinner";
 
 interface Props {
   width: number
@@ -11,7 +12,7 @@ interface Props {
 }
 
 export default function StreakPieChart({ width, hegint }: Props) {
-  const projects = useStoredProjects()
+  const { projects, loadingProjects } = useDataCtx()
   const [horasTotal, setHorasTotal] = useState<number>(0)
 
   useEffect(() => {
@@ -38,10 +39,10 @@ export default function StreakPieChart({ width, hegint }: Props) {
     <MacondoCard>
       <MacondoTitle text="Hours by project" size={25} />
       {
-        projects ?
+        projects && !loadingProjects ?
           <DonutChart
             data={projects as any}
-            centerLabel={String(horasTotal.toFixed(2)+"h")}
+            centerLabel={String(horasTotal.toFixed(2) + "h")}
             valueKey="hackatime_hours_sum"
             labelKey="name"
             width={width}
@@ -53,8 +54,8 @@ export default function StreakPieChart({ width, hegint }: Props) {
             }}
           />
           :
-          null          
-    }
+          <LoadingSpinner />
+      }
     </MacondoCard>
   )
 }

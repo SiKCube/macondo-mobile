@@ -1,5 +1,5 @@
 import { COLORS } from "@/consts";
-import { GestureResponderEvent, Text, TouchableHighlight, View, StyleSheet } from "react-native";
+import { GestureResponderEvent, StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 interface Props {
   title: string
@@ -11,7 +11,10 @@ interface Props {
 export default function MacondoButton({ title, disable, type, onClick }: Props) {
   return (
     <TouchableHighlight disabled={disable} onPress={onClick}
-      style={type === "p" ?  styles.primary : styles.secondary}>
+      style={{
+        ...(type === "p" ? styles.primary : styles.secondary),
+        opacity: disable ? 0.8 : 1
+      }}>
       <View>
         <Text style={type === "p" ? styles.primary_text : styles.secondary_text}>{title}</Text>
       </View>

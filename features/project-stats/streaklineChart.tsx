@@ -2,9 +2,10 @@ import MacondoButton from "@/components/ui/button"
 import MacondoCard from "@/components/ui/card"
 import MacondoText from "@/components/ui/text"
 import MacondoTitle from "@/components/ui/title"
+import { getStoredApiKey } from "@/config/getStoredApikey"
 import { COLORS } from "@/consts"
+import { useDataCtx } from "@/context/data-context-provider"
 import axios from "axios"
-import * as SecureStore from "expo-secure-store"
 import { useEffect, useState } from "react"
 import { Text, View } from "react-native"
 import { BarChart } from "react-native-chart-kit/v2"
@@ -37,6 +38,8 @@ const parseDate = (todayDate: number) => {
 }
 
 export default function StreakLineChart({ width, height }: Props) {
+  const { months, loadingMonths, updateMonth } = useDataCtx()
+
   const [todayDate, setTodayDate] = useState<number>(Date.now())
   const [dataChart, setDataChart] = useState<StreakParsedData[] | null>(null)
 
@@ -44,38 +47,29 @@ export default function StreakLineChart({ width, height }: Props) {
 
   const [loading, setLoading] = useState<boolean>(false)
 
-  const getChartData = async (dateToFetch: string) => {
+  const getChartData = (dateToFetch: string) => {
     setLoading(true)
-    const url = `https://macondo.hackclub.com/api/streaks/calendar?month=${dateToFetch}`
-
-    console.log(dateToFetch)
-    console.log(url)
-
-    const apikey = await SecureStore.getItemAsync("api-key")
-
-    const { data } = await axios.request({
-      method: "GET",
-      url: url,
-      headers: {
-        Authorization: `Bearer ${apikey}`
-      },
-    })
+    console.log("MESES: " + JSON.stringify(months))
+    const currentMonth = months?.find((m) => (m.month === dateToFetch))
 
     let totalHours = 0
 
-    const parsedData: StreakParsedData[] = data.days.map((day: StreakFetchData): StreakParsedData => {
-      totalHours += day.seconds_logged / 3600
+    if (currentMonth) {
+      const parsedData: StreakParsedData[] = currentMonth.days.map((day): StreakParsedData => {
+        totalHours += day.seconds_logged / 3600
+  
+        return {
+          day: day.day,
+          hours: day.seconds_logged / 3600
+        }
+      })
 
-      return {
-        day: day.day,
-        hours: day.seconds_logged / 3600
-      }
-    })
-
-    setDataChart([
-      ...parsedData
-    ])
-    setTotalHours(totalHours)
+      setDataChart([
+        ...parsedData
+      ])
+      setTotalHours(totalHours)
+      setLoading(false)
+    }
     setLoading(false)
   }
 
@@ -87,7 +81,7 @@ export default function StreakLineChart({ width, height }: Props) {
     <MacondoCard>
       <MacondoTitle text="Hours this month" size={25} />
       <MacondoText text={new Date(todayDate).toLocaleString("en-US", { month: "long", year: "numeric" })} size={15} />
-      <MacondoText text={loading ? "Loading..." : ""} size={10} />
+      <MacondoText text={loading || loadingMonths ? "Loading..." : ""} size={10} />
       <View style={{ gap: 16 }}>
         {
           dataChart ?
