@@ -1,8 +1,9 @@
 import MacondoCardMark from "@/components/ui/card-mark"
+import MacondoTitle from "@/components/ui/title"
 import { useSecureStore } from "@/hooks/useSecureStore"
 import axios from "axios"
-import { Link, useRouter } from "expo-router"
-import { useEffect, useState } from "react"
+import { useRouter } from "expo-router"
+import { useState } from "react"
 import { View } from "react-native"
 import MacondoButton from "../../components/ui/button"
 import MacondoInput from "../../components/ui/input"
@@ -37,18 +38,26 @@ export default function IntroForm() {
   return (
     <View style={{ height: 200, width: 350 }}>
       <MacondoCardMark>
-        <View style={{ gap: 10 }}>
-          <MacondoInput
-            disable={loading}
-            placeholder="Your Macondo API key"
-            type="text"
-            setValue={setInputVal}
-            value={inputVal as string}
+        <View style={{ gap: 10, paddingBottom: 70 }}>
+          <View>
+            <MacondoInput
+              disable={loading}
+              placeholder="Your Macondo API key"
+              type="text"
+              setValue={setInputVal}
+              value={inputVal as string}
+            />
+            <MacondoTitle
+              text="Your Macondo API_KEY"
+              size={10}
+            />
+          </View>
+          <MacondoButton
+            onClick={handler}
+            title={loading ? "Loading" : "Enter"}
+            type="p"
+            disable={loading || inputVal.length < 1}
           />
-          <MacondoButton title={loading ? "Loading" : "Enter"} type="p" onClick={handler} disable={loading} />
-        </View>
-        <View style={{ paddingTop: 20 }}>
-          <Link href={"https://google.com"}>Where is my API key?</Link>
         </View>
       </MacondoCardMark>
     </View>

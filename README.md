@@ -1,50 +1,55 @@
-# Welcome to your Expo app 👋
+![Calculator](assets\screenshots\screen.png)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Welcome to Macondo Mobile
+A mobile app that with just your Macondo API_KEY gives you all these features on your phone:
+- Project viewer
+- Gold calculator
+- Month chart
 
-## Get started
 
-1. Install dependencies
+## How to get your Macondo API_KEY?
+- Go to this link: https://macondo.hackclub.com/settings/api-keys
+- Create a API_KEY and copy the big string that gives you and paste it on the fist modal when opening Macondo Mobile.
 
-   ```bash
-   npm install
-   ```
+## Download
+Well is a mobile app so, you need to download it.
+Here the APKs: 
 
-2. Start the app
+## Tech stack
+This project uses [Expo](https://expo.dev), [React Native](https://reactnative.dev/) and [Axios](https://axios.rest/). The charts are made using: [React Native Chart Kit](https://chartkit.io/)
+All wrote with [Typescript](https://www.typescriptlang.org/).
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+## Hard challenges
+I was re-learing Expo, I tried it 2 years ago, but I didn't understand it, since then I never try again, so I found this project as a way to get my revenge to learn this framework, It was annoying to pass using `<div/>` to `<View/>` and the styling change a little bit. Then I learn the APIs that Expo offer like the `Secure Store` (to save the API_KEY) and the routing, it was dificult. Also replicating the Macondo UI style, was kinda dificult, especialy the card with their wood borders. The idea was a full App with a goals and gold calculator and local notifications, but I couldn't do it, not because it was dificult, because I found out that Macondo has closed since August! 
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Macondo has closed
+The idea was for Macondo, but I started at endings of August, and Macondo were closeing on August 31, by September I had a good part of the project done, but thet I found out that Macondo closed, I feel frustaed beacuse I put a lot of hours on the project. Thet I found other HackClub programs, so I had the idea to ship it here to get value for the hours I spent on the project.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Recenly they said that Macondo is fully closed by October 7, and I think it also his API (All the project works by using their API). So that's why I am speeding up the shipping of Macondo Mobile. 
 
-## Get a fresh project
+## Run it?
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+This project uses `pnpm`, follow this steps:
+1. Run this to clone the repo:
+```sh
+git clone https://github.com/SiKCube/macondo-mobile.git
 ```
+2. Run this to install all the dependecies:
+```sh
+pnpm install
+```
+3. Run this to start the dev server:
+```sh
+pnpm run start
+```
+4. Then using [Expo Go](https://expo.dev/go?sdkVersion=54&platform=android&device=true) (the project uses the **SDK 54**), scan the QR code that appears on your terminal.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Used AI?
+**Nope**, the project was for learning so making a AI help me wouldn't teach me anything. I like debuging stuff. 
 
-## Learn more
+## Bye
+**Thanks for reading!** If the project doesn't count beacuse the Macondo API closed or this project doesn't qualify for Phantom, at least it was a funny to learn and break my head doing this.
 
-To learn more about developing your project with Expo, look at the following resources:
+> You never lose something if you try.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

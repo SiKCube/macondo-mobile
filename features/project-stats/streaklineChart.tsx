@@ -131,6 +131,7 @@ export default function StreakLineChart({ width, height }: Props) {
                 const r = newDate.setUTCMonth(monthPast)
                 setTodayDate(r)
 
+                updateMonth(r)
                 getChartData(parseDate(r))
               }}
             />
@@ -145,6 +146,7 @@ export default function StreakLineChart({ width, height }: Props) {
                 const r = newDate.setUTCMonth(monthPast)
                 setTodayDate(r)
 
+                updateMonth(r)
                 getChartData(parseDate(r))
               }}
             />
