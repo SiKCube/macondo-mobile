@@ -8,14 +8,12 @@ A mobile app that with just your Macondo API_KEY gives you all these features on
 
 ## Video and Screenshots
 
-<div align="center">
-<video src="./images/video-demo.mp4" width="200" controls />
-</div>
+https://github.com/user-attachments/assets/18ea4209-8856-459e-8fbe-3bb64a8ed544
 
 <div align="center">
-<img alt="calculator" width="150" src="./images/calculator.png" />
-<img alt="projects" width="150" src="./images/projects.png" />
-<img alt="profile" width="150" src="./images/profile.png" />
+<img alt="calculator" width="200" src="./images/calculator.png" />
+<img alt="projects" width="200" src="./images/projects.png" />
+<img alt="profile" width="200" src="./images/profile.png" />
 </div>
 
 
