@@ -1,4 +1,4 @@
-![Calculator](assets\screenshots\screen.png)
+![Calculator](./images/screen.png)
 
 # Welcome to Macondo Mobile
 A mobile app that with just your Macondo API_KEY gives you all these features on your phone:
@@ -6,14 +6,25 @@ A mobile app that with just your Macondo API_KEY gives you all these features on
 - Gold calculator
 - Month chart
 
+## Video and Screenshots
+
+<div align="center">
+<video src="./images/video-demo.mp4" width="200" controls />
+</div>
+
+<div align="center">
+<img alt="calculator" width="150" src="./images/calculator.png" />
+<img alt="projects" width="150" src="./images/projects.png" />
+<img alt="profile" width="150" src="./images/profile.png" />
+</div>
+
 
 ## How to get your Macondo API_KEY?
 - Go to this link: https://macondo.hackclub.com/settings/api-keys
 - Create a API_KEY and copy the big string that gives you and paste it on the fist modal when opening Macondo Mobile.
 
 ## Download
-Well is a mobile app so, you need to download it.
-Here the APKs: 
+Well is a mobile app so, you need to download it [here](https://github.com/SiKCube/macondo-mobile/releases/tag/v1.0.0).
 
 ## Tech stack
 This project uses [Expo](https://expo.dev), [React Native](https://reactnative.dev/) and [Axios](https://axios.rest/). The charts are made using: [React Native Chart Kit](https://chartkit.io/)
